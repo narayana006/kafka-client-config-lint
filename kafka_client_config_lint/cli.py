@@ -59,7 +59,8 @@ def format_text(results: list[tuple[ClientConfig, list[Finding]]], profile: str)
             out.append(f"  {f.level.upper():<7} {f.rule}: {f.message}{where}")
             out.append(f"          {f.why}")
         out.append("")
-    out.append(", ".join(f"{total[lvl]} {lvl}" for lvl in reversed(LEVELS)))
+    out.append(f"{total['error']} error(s), {total['warning']} warning(s), "
+               f"{total['info']} info")
     return "\n".join(out)
 
 
